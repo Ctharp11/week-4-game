@@ -1,72 +1,76 @@
 
 
-var gameNumber = [""];
-var myNumber = "";
+var currentScore = 0;
 var wins = 0;
 var losses = 0; 
-var score = 0; 
-var red = "";
-var blue = "";
-var yellow = "";
-var green = "";
+var math = Math.floor(Math.random() * (102)) + 19;
 
 $(document).ready(function() {
 
 
 function startGame () {
-    	
-	var redCrystal = Math.floor(Math.random() * 12) + 1;
-	var blueCrystal = Math.floor(Math.random() * 12) + 1;
-	var yellowCrystal = Math.floor(Math.random() * 12) + 1;
-	var greenCrystal = Math.floor(Math.random() * 12) + 1;
 
 
-}
-
-
-
-	startGame() 
-
-
-
-	var math = Math.floor(Math.random() * (102)) + 19;
+	$(".winner").html("Wins: " + wins);
+	$(".loser").html("Losses: " + losses);
 
 	var redCrystal = Math.floor(Math.random() * 12) + 1;
 	var blueCrystal = Math.floor(Math.random() * 12) + 1;
 	var yellowCrystal = Math.floor(Math.random() * 12) + 1;
 	var greenCrystal = Math.floor(Math.random() * 12) + 1;
+	
 
-	$(".game-score").append(math);
+	$(".game-score").append("<h3>" + math + "</h3>");
 
 
 	$("#red").on("click", function () {
-		$(".score").html(redCrystal);
-	
+		currentScore += redCrystal; 
+		$(".score").html("<h3>" + currentScore + "</h3>");
 	})
 	$("#blue").on("click", function () {
-		$(".score").html(blueCrystal);
-		
+		currentScore += blueCrystal; 
+		$(".score").html("<h3>" + currentScore + "</h3>");	
 	})
 	$("#yellow").on("click", function () {
-		$(".score").html(yellowCrystal);
-		
+		currentScore += yellowCrystal; 
+		$(".score").html("<h3>" + currentScore + "</h3>");	
 	})
 	$("#green").on("click", function () {
-		$(".score").html(greenCrystal);
-		
+		currentScore += greenCrystal; 
+		$(".score").html("<h3>" + currentScore + "</h3>");
 	})
 
+}
 
 
+function playGame () {
 
-function game () {
-	//if myNumber === gameNumber, then I wins++
-	//else if myNumber > gameNumber, then I losses++
+	if (currentScore === math) {
+		wins += 1;
+		$(".winner").text("Wins: " + wins);
+		 console.log(wins);
+	} else if (currentScore > math) {
+		losses += 1;
+		$(".loser").text("Losses: " + losses);
+		 console.log(losses)
+	}
+
 }
 
 function reset () {
-	//if I win, then new gameNumber and myNumber is set back to 0
-	//Each crystal recieves and new sum number between 1 - 12
+	$(".score").html();
+	currentScore = 0;
+	math = Math.floor(Math.random() * (102)) + 19;
+	var redCrystal = Math.floor(Math.random() * 12) + 1;
+	var blueCrystal = Math.floor(Math.random() * 12) + 1;
+	var yellowCrystal = Math.floor(Math.random() * 12) + 1;
+	var greenCrystal = Math.floor(Math.random() * 12) + 1;
+
 }
+
+
+//reset();
+startGame();
+playGame();
 
 });

@@ -70,3 +70,13 @@ img {
 	text-align:center;
 	margin-top:10px;
 }
+
+.winner {
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.loser{
+	font-weight: bold;
+	font-size: 20px;
+}
