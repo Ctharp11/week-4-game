@@ -7,69 +7,69 @@ var math = Math.floor(Math.random() * (102)) + 19;
 
 $(document).ready(function() {
 
-
-function startGame () {
-
-
-	$(".winner").html("Wins: " + wins);
-	$(".loser").html("Losses: " + losses);
-
 	var redCrystal = Math.floor(Math.random() * 12) + 1;
 	var blueCrystal = Math.floor(Math.random() * 12) + 1;
 	var yellowCrystal = Math.floor(Math.random() * 12) + 1;
 	var greenCrystal = Math.floor(Math.random() * 12) + 1;
-	
-
-	$(".game-score").append("<h3>" + math + "</h3>");
-
 
 	$("#red").on("click", function () {
+		playGame();
 		currentScore += redCrystal; 
 		$(".score").html("<h3>" + currentScore + "</h3>");
 	})
 	$("#blue").on("click", function () {
+		playGame();
 		currentScore += blueCrystal; 
 		$(".score").html("<h3>" + currentScore + "</h3>");	
 	})
 	$("#yellow").on("click", function () {
+		playGame();
 		currentScore += yellowCrystal; 
 		$(".score").html("<h3>" + currentScore + "</h3>");	
 	})
 	$("#green").on("click", function () {
+		playGame();
 		currentScore += greenCrystal; 
 		$(".score").html("<h3>" + currentScore + "</h3>");
 	})
 
-}
+function startGame () {
 
+	$(".winner").html("Wins: " + wins);
+	$(".loser").html("Losses: " + losses);
+	$(".game-score").append("<h3>" + math + "</h3>");
+
+
+}
 
 function playGame () {
 
 	if (currentScore === math) {
 		wins += 1;
 		$(".winner").text("Wins: " + wins);
-		 console.log(wins);
+		 alert("You Win! \n The Random Number has been reset. Play again! \n Wins: " + wins);
+		 reset();
 	} else if (currentScore > math) {
 		losses += 1;
 		$(".loser").text("Losses: " + losses);
-		 console.log(losses)
+		 alert("You lose. \n The Random Number has been reset. Play again! \n Losses: " + losses)
+		 reset();
 	}
 
 }
 
-function reset () {
-	$(".score").html();
-	currentScore = 0;
+function reset () {	
 	math = Math.floor(Math.random() * (102)) + 19;
-	var redCrystal = Math.floor(Math.random() * 12) + 1;
-	var blueCrystal = Math.floor(Math.random() * 12) + 1;
-	var yellowCrystal = Math.floor(Math.random() * 12) + 1;
-	var greenCrystal = Math.floor(Math.random() * 12) + 1;
+	redCrystal = Math.floor(Math.random() * 12) + 1;
+	blueCrystal = Math.floor(Math.random() * 12) + 1;
+	yellowCrystal = Math.floor(Math.random() * 12) + 1;
+	greenCrystal = Math.floor(Math.random() * 12) + 1;
+	currentScore = 0;
+	$(".score").html("0");
+	$(".game-score").html("<h3> Random number: <br>	"+  + math + "</h3>");
 
 }
 
-
-//reset();
 startGame();
 playGame();
 
