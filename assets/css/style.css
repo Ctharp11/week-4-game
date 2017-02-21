@@ -80,3 +80,15 @@ img {
 	font-weight: bold;
 	font-size: 20px;
 }
+
+.game-over {
+	background-color: #f80cb6;
+	border: solid #f8c50c;
+	float: right;
+	padding: 5px;
+	text-align:center;
+	font-weight: bold;
+	font-size: 40px;
+
+
+}

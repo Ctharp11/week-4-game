@@ -38,7 +38,7 @@ function startGame () {
 	$(".winner").html("Wins: " + wins);
 	$(".loser").html("Losses: " + losses);
 	$(".game-score").append("<h3>" + math + "</h3>");
-
+	$(".game-over").text("Click the crystals to start playing!");
 
 }
 
@@ -47,11 +47,15 @@ function playGame () {
 	if (currentScore === math) {
 		wins += 1;
 		$(".winner").text("Wins: " + wins);
+		$(".game-over").text("You win! Play again.");
 		 reset();
+		
 	} else if (currentScore > math) {
 		losses += 1;
 		$(".loser").text("Losses: " + losses);
+		$(".game-over").html("You lose. Play again.");
 		 reset();
+
 	}
 
 }
@@ -65,8 +69,6 @@ function reset () {
 	$(".score").empty();
 	$(".game-score").html("<h3> Random number: <br>	"+  + math + "</h3>");
 	currentScore = 0;
-
-
 }
 
 startGame();
